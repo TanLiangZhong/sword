@@ -1,0 +1,64 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.1.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+ext {
+    swagger2Version = '2.9.2'
+    fastjsonVersion = '1.2.72'
+    druidVersion = '1.1.23'
+    kaptchaVersion = '2.3.2'
+}
+
+group = 'com.lz'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://plugins.gradle.org/m2/' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // apache
+    implementation "commons-codec:commons-codec"
+    implementation "org.apache.commons:commons-pool2"
+    implementation "org.apache.commons:commons-lang3"
+
+    // 验证码
+    implementation "com.github.penggle:kaptcha:${kaptchaVersion}"
+
+    // swagger
+    implementation "io.springfox:springfox-swagger2:${swagger2Version}"
+    implementation "io.springfox:springfox-swagger-ui:2.10.5"
+
+    // alibaba
+    implementation "com.alibaba:fastjson:${fastjsonVersion}"
+    implementation "com.alibaba:druid-spring-boot-starter:${druidVersion}"
+
+    runtime 'mysql:mysql-connector-java'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
