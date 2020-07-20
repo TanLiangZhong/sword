@@ -37,7 +37,7 @@ import java.util.Optional;
 @ConditionalOnProperty(prefix = "sword.record-log", name = "enable", havingValue = "true")
 public class RecordLogAop {
 
-    private ThreadLocal<Long> time = new ThreadLocal<>();
+    private final ThreadLocal<Long> time = new ThreadLocal<>();
 
     private final LogService logService;
     private final HttpServletRequest request;
@@ -75,7 +75,7 @@ public class RecordLogAop {
             sysLog.setUserId(user.getUserId());
             sysLog.setUsername(user.getUsername());
         } else {
-            if (recordLog.value().equals("用户登录")) {
+            if (Constant.USER_LOGIN_OPERATION.equals(recordLog.value())) {
                 AuthBo authBo = (AuthBo) args[0];
                 sysLog.setUserId(authBo.getUserId());
                 sysLog.setUsername(authBo.getUsername());
@@ -87,6 +87,7 @@ public class RecordLogAop {
         sysLog.setIp(IpUtil.getIp());
         sysLog.setTimeConsuming(timeConsuming);
         logService.save(sysLog);
+        time.remove();
     }
 
 }

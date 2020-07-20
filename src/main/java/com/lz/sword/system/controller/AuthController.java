@@ -1,5 +1,6 @@
 package com.lz.sword.system.controller;
 
+import com.lz.sword.common.constant.Constant;
 import com.lz.sword.common.domain.RestVo;
 import com.lz.sword.common.domain.system.bo.AuthBo;
 import com.lz.sword.common.domain.system.vo.AuthVo;
@@ -38,7 +39,7 @@ public class AuthController extends BaseController {
     }
 
     @GetMapping("currentUser")
-    @ApiOperation("当前用户")
+    @ApiOperation(Constant.USER_LOGIN_OPERATION)
     public RestVo<UserVo> currentUser() {
         UserVo user = getUser();
         user.setMenuAuthority(menuService.getUserAuthority(user.getUserId()));

@@ -22,4 +22,9 @@ public final class Constant {
      * 请求头所带token名称
      */
     public static final String TOKEN = "token";
+
+    /**
+     * 登录操作枚举 - 用于记录日志
+     */
+    public static final String USER_LOGIN_OPERATION = "用户登录";
 }

@@ -16,9 +16,27 @@ import java.util.Set;
 @Repository
 public interface ElementRepository extends BaseRepository<Element, Long> {
 
+    /**
+     * 根据  主键 查找
+     *
+     * @param elementIds 主键集合
+     * @return 元素
+     */
     List<Element> findAllByElementIdIn(Set<Long> elementIds);
 
+    /**
+     * 根据  父级Id 查找
+     *
+     * @param parentId 父级Id
+     * @return 元素
+     */
     List<Element> findByParentId(Long parentId);
 
+    /**
+     * 根据  权限标识 查找
+     *
+     * @param authority 权限标识
+     * @return 元素
+     */
     Element findTopByAuthority(String authority);
 }

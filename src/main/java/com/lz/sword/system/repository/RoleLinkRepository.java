@@ -54,6 +54,13 @@ public interface RoleLinkRepository extends BaseRepository<RoleLink, Long> {
     @Query("delete from RoleLink  where roleId = ?1")
     void deleteByRoleId(Long roleId);
 
+    /**
+     * 按角色ID和类型及元素ID删除
+     *
+     * @param roleId 角色Id
+     * @param type 类型( 0:菜单 1:页面元素 )
+     * @param elementId  元素Id
+     */
     @Modifying
     @Query("delete from RoleLink  where roleId = ?1 and type = ?2 and elementId in ?3")
     void deleteByRoleIdAndTypeAndElementIdIn(Long roleId, Integer type, List<Long> elementId);

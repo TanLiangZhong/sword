@@ -47,5 +47,12 @@ public interface MenuRepository extends BaseRepository<Menu, Long> {
     @Query("update Menu set delFlag = ?1 where menuId = ?2")
     void deleteById(Integer delFlag, Long id);
 
+    /**
+     * 根据权限标识, 删除标识 查找
+     *
+     * @param authority 权限标识
+     * @param delFlag   删除标识
+     * @return 菜单
+     */
     Menu findTopByAuthorityAndDelFlag(String authority, Integer delFlag);
 }

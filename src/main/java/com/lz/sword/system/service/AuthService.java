@@ -55,8 +55,9 @@ public class AuthService {
         if (user == null) {
             throw BusinessException.of(ResultMsg.LOGIN_FAIL_WRONG_PASSWORD);
         }
-        if (!SystemEnum.Status.ENABLE.getCode().equals(user.getStatus()))
+        if (!SystemEnum.Status.ENABLE.getCode().equals(user.getStatus())) {
             throw BusinessException.of(ResultMsg.LOGIN_FAIL_ACCOUNT_ABNORMAL);
+        }
 
         if (!DigestUtils.md5Hex(bo.getPassword() + user.getSalt()).equals(user.getPassword())) {
             throw BusinessException.of(ResultMsg.LOGIN_FAIL_WRONG_PASSWORD);

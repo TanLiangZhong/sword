@@ -26,6 +26,13 @@ public interface RoleRepository extends BaseRepository<Role, Long> {
     @Query("update Role set delFlag = ?1 where roleId = ?2")
     void deleteById(Integer delFlag, Long id);
 
+    /**
+     * 通过代码和Del标志查找Top
+     *
+     * @param code 唯一编号
+     * @param delFlag 删除标记
+     * @return
+     */
     Role findTopByCodeAndDelFlag(String code, Integer delFlag);
 
 }
