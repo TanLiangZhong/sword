@@ -1,10 +1,10 @@
 package com.lz.sword.system.service;
 
+import com.lz.sword.basic.impl.BaseServiceImpl;
 import com.lz.sword.common.domain.PageBo;
 import com.lz.sword.common.domain.PageVo;
 import com.lz.sword.common.domain.system.bo.KeywordSearchBo;
 import com.lz.sword.common.utils.JpaUtils;
-import com.lz.sword.basic.impl.BaseServiceImpl;
 import com.lz.sword.system.entity.Log;
 import com.lz.sword.system.repository.LogRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +49,12 @@ public class LogService extends BaseServiceImpl<LogRepository, Log, Long> {
                         criteriaBuilder.like(root.get("operation"), keyword),
                         criteriaBuilder.like(root.get("method"), keyword)
                 ));
+            }
+            if (searchBo.getBeginDate() != null) {
+                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("gmtCreated"), searchBo.getBeginDate()));
+            }
+            if (searchBo.getEndDate() != null) {
+                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("gmtCreated"), searchBo.getEndDate()));
             }
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         });
