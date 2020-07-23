@@ -16,6 +16,8 @@ public enum ResultMsg implements CodeEnum {
 
     SUCCESS("S0000", "操作成功"),
     ERROR("E0000", "系统异常"),
+    ARGUMENT_NOT_VALID("E0001", "Argument Not Valid Exception"),
+
     FAIL("F0000", "操作失败"),
     LOGIN_FAIL_WRONG_PASSWORD("F0001", "账户名或者密码输入错误!"),
     LOGIN_FAIL_CREDENTIALS_EXPIRED("F0002", "登录过期,请重新登录!"),

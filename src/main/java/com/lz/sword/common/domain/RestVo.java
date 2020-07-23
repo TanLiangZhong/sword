@@ -44,6 +44,12 @@ public class RestVo<T> implements Serializable {
         this.msg = resultMsg.getText();
     }
 
+    public RestVo(ResultMsg resultMsg, T data) {
+        this.code = resultMsg.getCode();
+        this.msg = resultMsg.getText();
+        this.data = data;
+    }
+
     public static <T> RestVo<T> success() {
         return new RestVo<>(ResultMsg.SUCCESS);
     }
