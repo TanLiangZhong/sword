@@ -8,9 +8,9 @@ spring:
 
   redis:
     database: 7
-    host: 106.15.90.42
+    host: 192.168.1.188
     port: 6379
-    password: JKeep-891117
+    password: 123456
     lettuce:
       pool:
         max-active: 8
@@ -23,9 +23,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://106.15.90.42:3306/keep-mes?autoReconnect=true&useUnicode=true&amp&characterEncoding=UTF-8&rewriteBatchedStatements=TRUE
-    username: jkeep
-    password: JKeep-891117
+    url: jdbc:mysql://192.168.1.188:3306/sword?autoReconnect=true&useUnicode=true&amp&characterEncoding=UTF-8&rewriteBatchedStatements=TRUE
+    username: root
+    password: root
     druid:
       initial-size: 5
       min-idle: 5
@@ -47,7 +47,7 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: true
