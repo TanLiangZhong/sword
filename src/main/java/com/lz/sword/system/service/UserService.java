@@ -57,7 +57,7 @@ public class UserService extends BaseServiceImpl<UserRepository, User, Long> {
             List<Predicate> predicates = new ArrayList<>();
             predicates.add(criteriaBuilder.equal(root.get("delFlag"), BaseEnum.DelFlagEnum.NORMAL.getCode()));
             KeywordSearchBo searchBo = pageBo.getParams();
-            if (!StringUtils.isEmpty(searchBo.getKeyword())) {
+            if (!StringUtils.hasText(searchBo.getKeyword())) {
                 String keyword = JpaUtils.addWildcard(searchBo.getKeyword());
                 predicates.add(criteriaBuilder.or(criteriaBuilder.like(root.get("username"), keyword),
                         criteriaBuilder.like(root.get("nickname"), keyword),
@@ -96,7 +96,7 @@ public class UserService extends BaseServiceImpl<UserRepository, User, Long> {
         }
         if (bo.getUserId() != null) {
             entity = userRepository.findById(bo.getUserId()).orElse(entity);
-            if (!StringUtils.isEmpty(bo.getPassword())) {
+            if (!StringUtils.hasText(bo.getPassword())) {
                 String salt = RandomGenerateUtil.getRandomS(0, 6);
                 bo.setPassword(DigestUtils.md5Hex(bo.getPassword() + salt));
                 bo.setSalt(salt);

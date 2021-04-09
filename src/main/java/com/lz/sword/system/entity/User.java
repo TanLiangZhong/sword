@@ -114,7 +114,7 @@ public class User implements Serializable {
     private Long updater;
 
     /**
-     * 删除标记 (1-正常 0-删除)
+     * 删除标记 (0-正常 1-删除)
      */
     @Column(name = "del_flag")
     private Integer delFlag;

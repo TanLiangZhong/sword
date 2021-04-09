@@ -18,8 +18,8 @@ public interface BaseEnum {
     @AllArgsConstructor
     enum DelFlagEnum {
 
-        NORMAL(1, "正常"),
-        DELETE(0, "删除");
+        NORMAL(0, "正常"),
+        DELETE(1, "删除");
 
         private final Integer code;
         private final String text;

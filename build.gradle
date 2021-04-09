@@ -1,13 +1,13 @@
 plugins {
-    id 'org.springframework.boot' version '2.3.1.RELEASE'
-    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
 ext {
-    swagger2Version = '2.9.2'
-    fastjsonVersion = '1.2.72'
-    druidVersion = '1.1.23'
+    swagger2Version = '3.0.0'
+    fastjsonVersion = '1.2.9'
+    druidVersion = '1.2.1'
     kaptchaVersion = '2.3.2'
 }
 
@@ -43,8 +43,9 @@ dependencies {
     implementation "com.github.penggle:kaptcha:${kaptchaVersion}"
 
     // swagger
-    implementation "io.springfox:springfox-swagger2:${swagger2Version}"
-    implementation "io.springfox:springfox-swagger-ui:2.10.5"
+//    implementation "io.springfox:springfox-swagger2:${swagger2Version}"
+//    implementation "io.springfox:springfox-swagger-ui:2.10.5"
+    compile "io.springfox:springfox-boot-starter:${swagger2Version}"
 
     // alibaba
     implementation "com.alibaba:fastjson:${fastjsonVersion}"
